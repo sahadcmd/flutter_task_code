@@ -124,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                   width: MediaQuery.of(context).size.width * 0.9,
                   color: Colors.white,
                   child: DataTable(
-                    headingRowColor: MaterialStateColor.resolveWith(
+                    headingRowColor: WidgetStateColor.resolveWith(
                         (states) => Colors.blueGrey),
                     columns: const [
                       DataColumn(
@@ -168,7 +168,7 @@ class _HomePageState extends State<HomePage> {
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: DataTable(
-                        headingRowColor: MaterialStateColor.resolveWith(
+                        headingRowColor: WidgetStateColor.resolveWith(
                             (states) => Colors.blueGrey),
                         columns: const [
                           DataColumn(
