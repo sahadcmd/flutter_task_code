@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task/add_user_page.dart';
+import 'package:flutter_task/otp_page.dart';
 import 'package:flutter_task/user_detail_page.dart';
 import 'package:flutter_task/edit_user_page.dart';
 import 'package:http/http.dart' as http;
@@ -72,6 +73,17 @@ class _HomePageState extends State<HomePage> {
         ),
         centerTitle: true,
         actions: [
+          IconButton(
+            icon: const Icon(Icons.message),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => OTPPage(key: UniqueKey())),
+              );
+            },
+            tooltip: 'otp page',
+          ),
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: LayoutBuilder(
@@ -126,7 +138,7 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.white,
                     child: DataTable(
                       headingRowColor: WidgetStateColor.resolveWith(
-                          (states) => Colors.blueGrey),
+                          (states) => const Color.fromARGB(255, 0, 0, 0)),
                       columns: const [
                         DataColumn(
                           label: Center(
