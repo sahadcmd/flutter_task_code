@@ -113,143 +113,152 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      backgroundColor: const Color.fromARGB(160, 52, 56, 57),
-      body: Center(
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            if (constraints.maxWidth < 600) {
-              return SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  color: Colors.white,
-                  child: DataTable(
-                    headingRowColor: WidgetStateColor.resolveWith(
-                        (states) => Colors.blueGrey),
-                    columns: const [
-                      DataColumn(
-                        label: Center(
-                          child: Text(
-                            'Name',
-                            style: TextStyle(fontSize: 19, color: Colors.white),
+      body: Container(
+        color: const Color.fromARGB(160, 52, 56, 57),
+        child: Center(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth < 600) {
+                return SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    color: Colors.white,
+                    child: DataTable(
+                      headingRowColor: WidgetStateColor.resolveWith(
+                          (states) => Colors.blueGrey),
+                      columns: const [
+                        DataColumn(
+                          label: Center(
+                            child: Text(
+                              'Name',
+                              style:
+                                  TextStyle(fontSize: 19, color: Colors.white),
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                    rows: users.map((user) {
-                      return DataRow(
-                        cells: [
-                          DataCell(
-                            Center(child: Text(user['name'])),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      UserDetailPage(user: user),
-                                ),
-                              );
-                            },
-                          ),
-                        ],
-                      );
-                    }).toList(),
+                      ],
+                      rows: users.map((user) {
+                        return DataRow(
+                          cells: [
+                            DataCell(
+                              Center(child: Text(user['name'])),
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        UserDetailPage(user: user),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        );
+                      }).toList(),
+                    ),
                   ),
-                ),
-              );
-            } else {
-              // Large screen layout
-              return Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Container(
-                    color: Colors.white,
-                    child: SingleChildScrollView(
-                      scrollDirection: Axis.vertical,
-                      child: DataTable(
-                        headingRowColor: WidgetStateColor.resolveWith(
-                            (states) => Colors.blueGrey),
-                        columns: const [
-                          DataColumn(
-                              label: Text(
-                            'ID',
-                            style: TextStyle(fontSize: 19, color: Colors.white),
-                          )),
-                          DataColumn(
-                              label: Text(
-                            'Name',
-                            style: TextStyle(fontSize: 19, color: Colors.white),
-                          )),
-                          DataColumn(
-                              label: Text(
-                            'Email',
-                            style: TextStyle(fontSize: 19, color: Colors.white),
-                          )),
-                          DataColumn(
-                              label: Text(
-                            'Gender',
-                            style: TextStyle(fontSize: 19, color: Colors.white),
-                          )),
-                          DataColumn(
-                              label: Text(
-                            'Status',
-                            style: TextStyle(fontSize: 19, color: Colors.white),
-                          )),
-                          DataColumn(
-                              label: Text(
-                            'Actions',
-                            style: TextStyle(fontSize: 19, color: Colors.white),
-                          )),
-                        ],
-                        rows: users.map((user) {
-                          return DataRow(
-                            cells: [
-                              DataCell(Text(user['id'].toString())),
-                              DataCell(Text(user['name'])),
-                              DataCell(Text(user['email'])),
-                              DataCell(Text(user['gender'])),
-                              DataCell(Text(user['status'])),
-                              DataCell(
-                                Row(
-                                  children: [
-                                    IconButton(
-                                      icon: const Icon(Icons.visibility),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                UserDetailPage(user: user),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                    IconButton(
-                                      icon: const Icon(Icons.edit),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                EditUserPage(user: user),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  ],
+                );
+              } else {
+                // Large screen layout
+                return Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Container(
+                      color: Colors.white,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: DataTable(
+                          headingRowColor: WidgetStateColor.resolveWith(
+                              (states) => Colors.blueGrey),
+                          columns: const [
+                            DataColumn(
+                                label: Text(
+                              'ID',
+                              style:
+                                  TextStyle(fontSize: 19, color: Colors.white),
+                            )),
+                            DataColumn(
+                                label: Text(
+                              'Name',
+                              style:
+                                  TextStyle(fontSize: 19, color: Colors.white),
+                            )),
+                            DataColumn(
+                                label: Text(
+                              'Email',
+                              style:
+                                  TextStyle(fontSize: 19, color: Colors.white),
+                            )),
+                            DataColumn(
+                                label: Text(
+                              'Gender',
+                              style:
+                                  TextStyle(fontSize: 19, color: Colors.white),
+                            )),
+                            DataColumn(
+                                label: Text(
+                              'Status',
+                              style:
+                                  TextStyle(fontSize: 19, color: Colors.white),
+                            )),
+                            DataColumn(
+                                label: Text(
+                              'Actions',
+                              style:
+                                  TextStyle(fontSize: 19, color: Colors.white),
+                            )),
+                          ],
+                          rows: users.map((user) {
+                            return DataRow(
+                              cells: [
+                                DataCell(Text(user['id'].toString())),
+                                DataCell(Text(user['name'])),
+                                DataCell(Text(user['email'])),
+                                DataCell(Text(user['gender'])),
+                                DataCell(Text(user['status'])),
+                                DataCell(
+                                  Row(
+                                    children: [
+                                      IconButton(
+                                        icon: const Icon(Icons.visibility),
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  UserDetailPage(user: user),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                      IconButton(
+                                        icon: const Icon(Icons.edit),
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  EditUserPage(user: user),
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            ],
-                          );
-                        }).toList(),
+                              ],
+                            );
+                          }).toList(),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              );
-            }
-          },
+                );
+              }
+            },
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
