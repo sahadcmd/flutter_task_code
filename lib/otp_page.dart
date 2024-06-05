@@ -10,13 +10,10 @@ class OTPPage extends StatefulWidget {
 
 class _OTPPageState extends State<OTPPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _mobileController = TextEditingController();
   final TextEditingController _otpController = TextEditingController();
-  bool _isMobileInputStage = true;
 
   @override
   void dispose() {
-    _mobileController.dispose();
     _otpController.dispose();
     super.dispose();
   }
@@ -29,44 +26,7 @@ class _OTPPageState extends State<OTPPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
-        child:
-            _isMobileInputStage ? _buildMobileInput() : _buildOTPVerification(),
-      ),
-    );
-  }
-
-  Widget _buildMobileInput() {
-    return Form(
-      key: _formKey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextFormField(
-            controller: _mobileController,
-            keyboardType: TextInputType.phone,
-            decoration: const InputDecoration(
-              labelText: 'Mobile Number',
-              hintText: 'Enter your mobile number',
-            ),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter mobile number';
-              }
-              return null;
-            },
-          ),
-          const SizedBox(height: 20),
-          ElevatedButton(
-            onPressed: () {
-              if (_formKey.currentState!.validate()) {
-                setState(() {
-                  _isMobileInputStage = false;
-                });
-              }
-            },
-            child: const Text('Send OTP'),
-          ),
-        ],
+        child: _buildOTPVerification(),
       ),
     );
   }
@@ -104,7 +64,7 @@ class _OTPPageState extends State<OTPPage> {
   void _verifyOTP() {
     if (_formKey.currentState!.validate()) {
       // Perform OTP verification here
-      // Add your OTP verification logic here]
+      // Add your OTP verification logic here
     }
   }
 }
